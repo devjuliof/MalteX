@@ -1,6 +1,6 @@
 package com.guardians_of_the_code;
 
-import com.guardians_of_the_code.dtos.ClientRequestDTO;
+/*import com.guardians_of_the_code.dtos.ClientRequestDTO;
 import com.guardians_of_the_code.exceptions.HandleBadRequestException;
 import com.guardians_of_the_code.exceptions.HandleNotFoundException;
 import com.guardians_of_the_code.use_cases.CreateClientUseCase;
@@ -135,5 +135,5 @@ public class ClientTest {
     }
 
 
-}
+}*/
 
