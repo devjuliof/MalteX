@@ -50,7 +50,3 @@ SUBSTRING(HEX(id), 21, 12)
 -------------------------------------------------
 ### Link da produção
 #### https://maltex-back-production.up.railway.app
-
-
-------------------------------------------------
-//retirar phone
