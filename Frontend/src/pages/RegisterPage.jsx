@@ -10,7 +10,7 @@ import WhiteButton from '../components/WhiteButton';
 import GoogleIcon from '../assets/google-icon.png';
 import FacebookIcon from '../assets/facebook-icon.png';
 import Logo from '../components/Logo';
-import jwt_decode from 'jwt-decode';
+import { jwt_decode } from 'jwt-decode';
 
 // Google Client ID from your .env
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
