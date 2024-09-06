@@ -10,6 +10,7 @@ import WhiteButton from '../components/WhiteButton';
 import GoogleIcon from '../assets/google-icon.png';
 import FacebookIcon from '../assets/facebook-icon.png';
 import Logo from '../components/Logo';
+import { jwt_decode } from 'jwt-decode';
 
 // Google Client ID from your .env
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
@@ -27,8 +28,8 @@ const RegisterPage = () => {
   const handleGoogleSuccess = (credentialResponse) => {
     const token = credentialResponse.credential;
     // Processar o token do Google aqui
-    console.log('Google login bem-sucedido:', token);
-    login(token);
+    const tokenDecoded = jwt_decode(token);
+    console.log('Google login bem-sucedido:', tokenDecoded);
   };
 
   const handleGoogleFailure = (error) => {
