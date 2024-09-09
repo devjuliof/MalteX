@@ -14,57 +14,61 @@ import CheckoutPage from './pages/CheckoutPage';
 import CartPage from './pages/CartPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Importação do CSS do Toastify
+import { AdressProvider } from './context/AdressProvider';
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <ProductProvider>
-          <Routes>
-            <Route
-              path="/"
-              element={<PublicRoute element={<RegisterPage />} />}
+          <AdressProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={<PublicRoute element={<RegisterPage />} />}
+              />
+              <Route
+                path="/signup"
+                element={<PublicRoute element={<SignUpPage />} />}
+              />
+              <Route
+                path="/signin"
+                element={<PublicRoute element={<SignInPage />} />}
+              />
+              <Route
+                path="/catalog"
+                element={<ProtectedRoute element={<ProductPage />} />}
+              />
+
+              <Route
+                path="/adress"
+                element={<ProtectedRoute element={<AdressPage />} />}
+              />
+              <Route
+                path="/checkout"
+                element={<ProtectedRoute element={<CheckoutPage />} />}
+              />
+              <Route
+                path="/catalog/:id"
+                element={<ProtectedRoute element={<ProductDetails />} />}
+              />
+              <Route
+                path="/cart"
+                element={<ProtectedRoute element={<CartPage />} />}
+              />
+            </Routes>
+            {/* Adicionando o ToastContainer para que os toasts sejam exibidos */}
+            <ToastContainer
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
             />
-            <Route
-              path="/signup"
-              element={<PublicRoute element={<SignUpPage />} />}
-            />
-            <Route
-              path="/signin"
-              element={<PublicRoute element={<SignInPage />} />}
-            />
-            <Route
-              path="/catalog"
-              element={<ProtectedRoute element={<ProductPage />} />}
-            />
-            <Route
-              path="/adress"
-              element={<ProtectedRoute element={<AdressPage />} />}
-            />
-            <Route
-              path="/catalog/:id"
-              element={<ProtectedRoute element={<ProductDetails />} />}
-            />
-            <Route
-              path="/checkout"
-              element={<ProtectedRoute element={<CheckoutPage />} />}
-            />
-            <Route
-              path="/cart"
-              element={<ProtectedRoute element={<CartPage />} />}
-            />
-          </Routes>
-          {/* Adicionando o ToastContainer para que os toasts sejam exibidos */}
-          <ToastContainer
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+          </AdressProvider>
         </ProductProvider>
       </AuthProvider>
     </Router>

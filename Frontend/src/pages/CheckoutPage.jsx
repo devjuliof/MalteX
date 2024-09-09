@@ -9,18 +9,20 @@ import stripeIcon from '../assets/stripe-icon.svg';
 import whatsappIcon from '../assets/whatsapp-icon.svg';
 import GreenButton from '../components/GreenButton';
 import { ProductContext } from '../context/ProductContext';
+import { AdressContext } from '../context/AdressProvider';
 
 const CheckoutPage = () => {
   const { cartProd } = useContext(ProductContext);
+  const { adress } = useContext(AdressContext);
+
   const navigate = useNavigate();
   const [selectedPayment, setSelectedPayment] = useState(null);
-
   const handleBackArrow = () => {
     navigate(-1);
   };
 
   const handleEdit = () => {
-    // Lógica para editar endereço
+    navigate('/adress');
   };
 
   const handlePaymentSelection = (paymentMethod) => {
@@ -36,7 +38,7 @@ const CheckoutPage = () => {
     if (selectedPayment === 'whatsapp') {
       sendOrderToWhatsApp();
     } else {
-      alert('Redirecionando para o pagamento via ' + selectedPayment);
+      alert('Em desenvolvimento...');
     }
   };
 
@@ -73,8 +75,8 @@ const CheckoutPage = () => {
           <div className={styles.cardUserAdress}>
             <img src={mapMarkerIcon} alt="Map Marker Icon" />
             <div className={styles.cardUserAdressInfo}>
-              <h3 className={fonts.latoBold}>Bairro</h3>
-              <h4 className={fonts.latoMedium}>Logradouro</h4>
+              <h3 className={fonts.latoBold}>{adress.bairro}</h3>
+              <h4 className={fonts.latoMedium}>{adress.logradouro}</h4>
             </div>
             <p onClick={handleEdit} className={styles.editText}>
               Editar

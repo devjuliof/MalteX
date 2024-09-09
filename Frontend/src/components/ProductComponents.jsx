@@ -14,13 +14,17 @@ const ProductCard = ({ name, price, photo, id }) => {
     }
   };
 
-  console.log(photo)
-
-
   return (
     <div className={styles.allProdCatalog}>
-      <Link to={`/catalog/${id}`} className={styles.link } onClick={handleGuestUser}> 
-        <img src={`https://maltex-back-production.up.railway.app/assets/${photo}`} className={styles.imgProd} />
+      <Link
+        to={`/catalog/${id}`}
+        className={styles.link}
+        onClick={handleGuestUser}
+      >
+        <img
+          src={`https://maltex-back-production.up.railway.app/assets/${photo}`}
+          className={styles.imgProd}
+        />
         <div className={styles.legendaProd}>
           <p>{name}</p>
           <p>
