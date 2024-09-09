@@ -27,7 +27,7 @@ const RegisterPage = () => {
   };
 
   const handleGoogleSuccess = (response) => {
-    login(response.id_token, response.user);
+    login(response.user, response.id_token);
     console.log(response);
   };
 
@@ -36,11 +36,8 @@ const RegisterPage = () => {
   };
 
   const handleFacebookSuccess = (response) => {
-    const { data } = response;
-    const { first_name, email, picture } = data;
-    console.log('Login com facebook realizado');
-    console.log(first_name, email, picture.data.url);
-    // Send data to backend >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    console.log(response);
+    login(response.acess_token, response.data);
   };
 
   const handleFacebookFailure = (error) => {

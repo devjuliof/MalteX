@@ -6,6 +6,7 @@ import mapMarkerIcon from '../assets/map-marker.svg';
 import styles from './css/AdressPage.module.css';
 import fonts from '../fonts/fonts.module.css';
 import { useNavigate } from 'react-router-dom';
+import { AdressContext } from '../context/AdressProvider';
 
 const AdressPage = () => {
   const [bairro, setBairro] = useState('');
@@ -15,7 +16,8 @@ const AdressPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [cep, setCep] = useState('');
-  const [addressToSave, setAddressToSave] = useState({}); // New state to hold the address before confirmation
+
+  const { adress, setAdress } = React.useContext(AdressContext);
 
   const fetchAddressFromCep = async (cep) => {
     const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -24,7 +26,7 @@ const AdressPage = () => {
       alert('CEP não encontrado');
       return;
     }
-    setAddressToSave({
+    setAdress({
       bairro: responseJson.bairro,
       logradouro: responseJson.logradouro,
       numero: '',
@@ -55,7 +57,7 @@ const AdressPage = () => {
           const address = responseJson.address;
 
           // Preenche o estado com os dados obtidos
-          setAddressToSave({
+          setAdress({
             bairro:
               address.suburb ||
               address.neighbourhood ||
@@ -80,10 +82,10 @@ const AdressPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setBairro(addressToSave.bairro);
-    setLogradouro(addressToSave.logradouro);
-    setNumero(addressToSave.numero);
-    setComplemento(addressToSave.complemento);
+    setBairro(adress.bairro);
+    setLogradouro(adress.logradouro);
+    setNumero(adress.numero);
+    setComplemento(adress.complemento);
     setIsModalOpen(false);
     setIsEditing(false);
   };
@@ -152,9 +154,9 @@ const AdressPage = () => {
                 Bairro:
                 <input
                   type="text"
-                  value={addressToSave.bairro || bairro}
+                  value={adress.bairro || bairro}
                   onChange={(e) =>
-                    setAddressToSave((prev) => ({
+                    setAdress((prev) => ({
                       ...prev,
                       bairro: e.target.value,
                     }))
@@ -167,9 +169,9 @@ const AdressPage = () => {
                 Logradouro:
                 <input
                   type="text"
-                  value={addressToSave.logradouro || logradouro}
+                  value={adress.logradouro || logradouro}
                   onChange={(e) =>
-                    setAddressToSave((prev) => ({
+                    setAdress((prev) => ({
                       ...prev,
                       logradouro: e.target.value,
                     }))
@@ -182,9 +184,9 @@ const AdressPage = () => {
                 Número:
                 <input
                   type="text"
-                  value={addressToSave.numero || numero}
+                  value={adress.numero || numero}
                   onChange={(e) =>
-                    setAddressToSave((prev) => ({
+                    setAdress((prev) => ({
                       ...prev,
                       numero: e.target.value,
                     }))
@@ -196,9 +198,9 @@ const AdressPage = () => {
                 Complemento:
                 <input
                   type="text"
-                  value={addressToSave.complemento || complemento}
+                  value={adress.complemento || complemento}
                   onChange={(e) =>
-                    setAddressToSave((prev) => ({
+                    setAdress((prev) => ({
                       ...prev,
                       complemento: e.target.value,
                     }))
