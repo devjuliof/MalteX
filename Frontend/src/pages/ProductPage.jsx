@@ -25,7 +25,7 @@ const ProductPage = () => {
   } = useContext(ProductContext);
   const [search, setSearch] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { logout } = React.useContext(AuthContext);
+  const { logout, userData } = React.useContext(AuthContext);
   const itemCount = cartProd.length;
 
   const { userData } = React.useContext(AuthContext);
@@ -65,7 +65,7 @@ const ProductPage = () => {
       <section className={styles.container}>
         <div>
           <h2>Olá,</h2>
-          <h3>UserName</h3>
+          <h3>{userData.last_name}</h3>
         </div>
 
         <div
