@@ -65,7 +65,7 @@ const ProductPage = () => {
       <section className={styles.container}>
         <div>
           <h2>Olá,</h2>
-          <h3>{userData.last_name}</h3>
+          <h3>Seja bem vindo!</h3>
         </div>
 
         <div
