@@ -57,6 +57,10 @@
     margin-bottom: 20px;
 }
 
+.logos img {
+    cursor: pointer;
+}
+
 @media (min-width: 768px) {
     .container {
         background-image: none;

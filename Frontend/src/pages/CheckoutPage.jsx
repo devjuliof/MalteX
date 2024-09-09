@@ -55,7 +55,7 @@ const CheckoutPage = () => {
       2,
     )}`;
 
-    const whatsappLink = `https://wa.me/5562994123574?text=${encodeURIComponent(
+    const whatsappLink = `https://api.whatsapp.com/send?phone=5562994123574&text=${encodeURIComponent(
       message,
     )}`;
     window.open(whatsappLink, '_blank');
