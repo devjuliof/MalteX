@@ -27,8 +27,6 @@ const ProductPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { logout, userData } = React.useContext(AuthContext);
   const itemCount = cartProd.length;
-
-  const { userData } = React.useContext(AuthContext);
   console.log(userData);
   const handleSearch = (event) => {
     setSearch(event.target.value);
