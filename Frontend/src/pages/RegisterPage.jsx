@@ -28,7 +28,6 @@ const RegisterPage = () => {
 
   const handleGoogleSuccess = (response) => {
     login(response.user, response.id_token);
-    console.log(response);
   };
 
   const handleGoogleFailure = (error) => {
