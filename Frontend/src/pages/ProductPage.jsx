@@ -28,6 +28,8 @@ const ProductPage = () => {
   const { logout } = React.useContext(AuthContext);
   const itemCount = cartProd.length;
 
+  const { userData } = React.useContext(AuthContext);
+  console.log(userData);
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };

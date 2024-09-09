@@ -36,7 +36,7 @@ const RegisterPage = () => {
   };
 
   const handleFacebookSuccess = (response) => {
-    login(response.data.accessToken, response.data);
+    login(response.data, response.data.accessToken);
   };
 
   const handleFacebookFailure = (error) => {
